@@ -5,7 +5,7 @@ import { type Address } from 'viem'
 export const middleware = paymentMiddleware(
   process.env.PAY_ADDRESS as Address,
   {
-    '/book': {
+    'GET /book': {
       price: '$1',
       network: 'base',
       config: {
