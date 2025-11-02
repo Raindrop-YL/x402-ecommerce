@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'x402-ecommerce', // 应用名称
+      name: 'x402-ecommerce-test', // 应用名称
       script: 'npm', // 使用 npm 作为启动器
       args: 'start', // 传递给 npm 的参数（即执行 npm start）
       port: 4021, // 应用端口

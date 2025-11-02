@@ -9,7 +9,25 @@ export const middleware = paymentMiddleware(
       price: '$1',
       network: 'base',
       config: {
+        resource: 'https://402.shopping/book',
         description: 'Access to protected content',
+        outputSchema: {
+          type: 'object',
+          properties: {
+            success: {
+              type: 'boolean',
+              description: 'is success.',
+            },
+            hash: {
+              type: 'string',
+              description: 'Transaction Hash',
+            },
+            message: {
+              type: 'string',
+              description: 'message.',
+            },
+          },
+        },
       },
     },
   },
