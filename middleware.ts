@@ -5,12 +5,23 @@ import { type Address } from 'viem'
 export const middleware = paymentMiddleware(
   process.env.PAY_ADDRESS as Address,
   {
-    'GET /book': {
+    'POST /book': {
       price: '$1',
       network: 'base',
       config: {
         resource: 'https://402.shopping/book',
-        description: 'Access to protected content',
+        description:
+          'An ebook predicted digital currency ten years before Satoshi.',
+        inputSchema: {
+          bodyType: 'json',
+          bodyFields: {
+            type: {
+              type: 'string',
+              enum: ['love', 'rich', 'health', 'crypto', 'mysteriou'],
+              description: 'An ebook type.',
+            },
+          },
+        },
         outputSchema: {
           type: 'object',
           properties: {
@@ -20,11 +31,15 @@ export const middleware = paymentMiddleware(
             },
             hash: {
               type: 'string',
-              description: 'Transaction Hash',
+              description: 'Transaction Hash.',
+            },
+            url: {
+              type: 'string',
+              description: 'ebook pdf url.',
             },
             message: {
               type: 'string',
-              description: 'message.',
+              description: 'service message.',
             },
           },
         },

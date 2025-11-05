@@ -25,6 +25,7 @@ const books = [
     color: 'text-pink-500',
     bgColor: 'bg-pink-500/10',
     borderColor: 'border-pink-500/30',
+    type: 'love',
   },
   {
     id: 2,
@@ -35,6 +36,7 @@ const books = [
     color: 'text-green-500',
     bgColor: 'bg-green-500/10',
     borderColor: 'border-green-500/30',
+    type: 'rich',
   },
   {
     id: 3,
@@ -45,6 +47,7 @@ const books = [
     color: 'text-blue-500',
     bgColor: 'bg-blue-500/10',
     borderColor: 'border-blue-500/30',
+    type: 'crypto',
   },
   {
     id: 4,
@@ -55,6 +58,7 @@ const books = [
     color: 'text-orange-500',
     bgColor: 'bg-orange-500/10',
     borderColor: 'border-orange-500/30',
+    type: 'health',
   },
   {
     id: 5,
@@ -65,6 +69,7 @@ const books = [
     color: 'text-purple-500',
     bgColor: 'bg-purple-500/10',
     borderColor: 'border-purple-500/30',
+    type: 'mysterious',
   },
 ]
 

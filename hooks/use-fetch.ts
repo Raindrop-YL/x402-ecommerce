@@ -34,11 +34,13 @@ export const useX402Fetch = <TData = unknown>(
       )
 
       const response = await fetchWithPayment(targetUrl, init)
+      const result = await response.json()
 
-      const contentType = response.headers.get('content-type') ?? ''
-      return contentType.includes('application/json')
-        ? (response.json() as Promise<TData>)
-        : (response.text() as Promise<TData>)
+      if (response.status !== 200) {
+        throw new Error(result.message ?? 'Service Error')
+      }
+
+      return result
     },
     ...options,
   })

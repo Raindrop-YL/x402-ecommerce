@@ -14,6 +14,7 @@ interface Props {
   icon: LucideIcon
   title: string
   description: string
+  type: string
   color: string
   bgColor: string
   borderColor: string
@@ -22,18 +23,27 @@ interface Props {
 export const PaymentBook: React.FC<Props> = props => {
   const { toast } = useToast()
   const { isConnected } = useAccount()
-  const { data, mutate, isPending, isSuccess } = useX402Fetch(
+  const { data, mutate, isPending, isSuccess } = useX402Fetch<{
+    success: boolean
+    hash: string
+    url: string
+    message: string
+  }>(
     '/book',
     parseUnits('1', 6),
     {
-      method: 'GET',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ type: props.type }),
     },
     {
       onSuccess: data => {
-        console.log(data)
         window.alert(
           `Here's your "${props.title}" e-book! 📚\n\nThank you for being an early adopter of x402 Protocol.`
         )
+        window.open(data.url, '_blank')
       },
       onError: err => {
         toast({ title: 'Erroe', description: err.message })
@@ -84,7 +94,8 @@ export const PaymentBook: React.FC<Props> = props => {
         isSuccess ? (
           <div className="rounded-lg border border-green-500/30 bg-green-500/10 py-3 text-center">
             <p className="text-sm font-medium text-green-500">✓ Purchased!</p>
-            <p className="text-muted-foreground mt-1 text-xs">
+            <p className="text-muted-foreground mt-1 text-xs break-keep">
+              Book download link "{data.url}". <br />
               The $SHOP token will be airdropped shortly too.
             </p>
           </div>
