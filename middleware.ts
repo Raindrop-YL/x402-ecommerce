@@ -10,8 +10,7 @@ export const middleware = paymentMiddleware(
       network: 'base',
       config: {
         resource: 'https://402.shopping/book',
-        description:
-          'An ebook predicted digital currency ten years before Satoshi.',
+        description: 'Pick your next read from five ebooks.',
         inputSchema: {
           bodyType: 'json',
           bodyFields: {
